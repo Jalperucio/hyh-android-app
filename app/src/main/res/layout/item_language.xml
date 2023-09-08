@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/card_language_width"
+    android:layout_height="@dimen/card_language_height"
+    android:layout_marginEnd="@dimen/horizontal_tiny_margin"
+    android:layout_marginStart="@dimen/horizontal_tiny_margin"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="1dp"
+    app:cardBackgroundColor="@color/lesson_card_background">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_item_language_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/vertical_small_margin"
+            tools:text="Lenguaje" />
+
+        <View
+            android:id="@+id/divider"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_height="2dp"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>

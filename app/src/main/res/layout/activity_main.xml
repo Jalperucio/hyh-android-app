@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_main_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="42dp"
+        android:layout_marginTop="180dp"
+        android:maxLines="1"
+        android:gravity="center"
+        android:hint="@string/main_name_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_button"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:text="A navegar!"
+        android:background="#00BCD4"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@id/et_main_name"
+        app:layout_constraintStart_toStartOf="@id/et_main_name"
+        app:layout_constraintTop_toBottomOf="@id/et_main_name"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

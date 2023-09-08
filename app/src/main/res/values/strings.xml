@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MyFirstApp</string>
+
+
+    <string name="hello_app">Hello App</string>
+    <string name="lessonn_app">Lesson App</string>
+    <string name="third_app">Third App</string>
+    <string name="fourth_app">Fourth App</string>
+
+
+    <!-- Main texts -->
+    <string name="main_name_hint">Introduzca su nombre</string>
+
+    <!-- Lesson texts -->
+    <string name="lesson_title_label">Lista de lecciones</string>
+    <string name="language">Idiomas</string>
+    <string name="language_android">Android</string>
+    <string name="language_ios">iOS</string>
+    <string name="language_flutter">Flutter</string>
+    <string name="lessons">Lecciones</string>
+    <string name="add_lesson">Añadir nueva lección</string>
+    <string name="add_lesson_name_hint">Introduzca un nombre</string>
+
+</resources>

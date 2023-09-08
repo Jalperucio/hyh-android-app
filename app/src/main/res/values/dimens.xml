@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="main_margin">16dp</dimen>
+
+    <dimen name="horizontal_large_margin">32dp</dimen>
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="horizontal_small_margin">8dp</dimen>
+    <dimen name="horizontal_tiny_margin">4dp</dimen>
+
+    <dimen name="vertical_large_margin">32dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+    <dimen name="vertical_small_margin">8dp</dimen>
+
+    <!-- Text -->
+    <dimen name="title_text">24sp</dimen>
+    <dimen name="regular_text">16sp</dimen>
+    <dimen name="text_button">16sp</dimen>
+
+    <!-- Card -->
+    <dimen name="card_language_height">90dp</dimen>
+    <dimen name="card_language_width">160dp</dimen>
+    <dimen name="card_lesson_height">90dp</dimen>
+    <dimen name="card_lesson_width">160dp</dimen>
+
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_corner_small_radius">8dp</dimen>
+
+
+</resources>
