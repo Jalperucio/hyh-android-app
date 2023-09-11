@@ -7,8 +7,9 @@ import com.jalper.myfirstapp.databinding.ItemLanguageBinding
 import com.jalper.myfirstapp.lessonsapp.model.Language
 
 class LanguagesAdapter(
-    private val languages: List<Language>
-) : RecyclerView.Adapter<LanguagesViewHolder>() {
+    private val languages: List<Language>,
+    val onItemClicked: (Int) -> Unit,
+    ) : RecyclerView.Adapter<LanguagesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LanguagesViewHolder {
         val binding = ItemLanguageBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -17,6 +18,10 @@ class LanguagesAdapter(
 
     override fun onBindViewHolder(holder: LanguagesViewHolder, position: Int) {
         holder.render(languages[position])
+
+        holder.itemView.setOnClickListener {
+            onItemClicked(position)
+        }
     }
 
     override fun getItemCount() = languages.size

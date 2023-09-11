@@ -1,5 +1,6 @@
 package com.jalper.myfirstapp.lessonsapp
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.RadioButton
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.jalper.myfirstapp.databinding.ActivityLessonBinding
 import com.jalper.myfirstapp.databinding.DialogAddLessonBinding
+import com.jalper.myfirstapp.lessonsapp.model.Language
 import com.jalper.myfirstapp.lessonsapp.model.Language.Android
 import com.jalper.myfirstapp.lessonsapp.model.Language.Flutter
 import com.jalper.myfirstapp.lessonsapp.model.Language.IOS
@@ -25,7 +27,6 @@ class LessonActivity : AppCompatActivity() {
         Lesson("Estilos")
     )
 
-    val leccion: Lesson = Lesson("Vistas", Android)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,18 +38,23 @@ class LessonActivity : AppCompatActivity() {
         initListeners()
     }
 
-    fun initUI() {
-        binding.rvLessonLanguages.adapter = LanguagesAdapter(languagesList)
-        binding.rvLessonLessons.adapter = LessonsAdapter(lessonsList)
+    private fun initUI() {
+        binding.rvLessonLanguages.adapter = LanguagesAdapter(languagesList) { position: Int -> selectLanguage(position)}
+        binding.rvLessonLessons.adapter = LessonsAdapter(lessonsList) { position: Int -> removeItem(position) }
     }
 
-    fun initListeners() {
+    private fun initListeners() {
         binding.fabLessonsAddButton.setOnClickListener {
             showDialog()
         }
     }
 
-    fun showDialog() {
+//      --Ejemplos de función convertida en lambda--
+//    fun saludar(name: String) { println("Hola, $name") }
+//    val saludarLambda = { name:String ->  println("Hola, $name")}
+
+
+    private fun showDialog() {
         val dialog = Dialog(this)
 
         val dialogBinding = DialogAddLessonBinding.inflate(layoutInflater)
@@ -73,24 +79,41 @@ class LessonActivity : AppCompatActivity() {
 
             lessonsList.add(Lesson(name, languageSelected))
 
-            /*TODO - Disclaimer:
-            * Comentamos en clase que al añadir un elemento al listado no habría cambios
-            * gráficos si no avisamos al adaptador de estos cambios, pero luego vimos
-            * en directo que esto no era del t odo cierto y sí se actualizaba el listado
-            * Esto es por utilizar un mutableList (ya lo veremos el próximo día).
-            *
-            * Como este caso no es habitual y solo es un ejemplo intermedio antes de que
-            * veamos la implementación nivel pro de las ReyclerView dejo la siguiente
-            * función añadida para que os acostumbréis a que hay que avisar al adaptador
-            * tras realizar cambios sobre sus listas
-            */
             updateLessonsListView()
             dialog.dismiss()
         }
         dialog.show()
     }
 
+    private fun removeItem(position: Int){
+        //Da fallos por culpa del índice si se han realizado filtros primero
+        //Se deja por motivos de avance académico
+        lessonsList.removeAt(position)
+        updateLessonsListView()
+    }
+
+    private fun selectLanguage(position: Int) {
+        languagesList[position].isSelected = !languagesList[position].isSelected
+        updateLanguagesListView()
+        updateLessonsListView()
+    }
+
+
+    @SuppressLint("NotifyDataSetChanged")
     private fun updateLessonsListView() {
+        val selectedLanguages: List<Language> = languagesList.filter { it.isSelected }
+        val showableLessons = lessonsList.filter { selectedLanguages.contains(it.language) }
+        //val showableLessons = lessonsList.filter { it.language in selectedLanguages }
+
+
+        (binding.rvLessonLessons.adapter as LessonsAdapter).lessons = showableLessons
+
         binding.rvLessonLessons.adapter?.notifyDataSetChanged()
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun updateLanguagesListView() {
+        binding.rvLessonLanguages.adapter?.notifyDataSetChanged()
+    }
+
 }
