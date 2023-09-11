@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_menu_third_button"
+        android:id="@+id/btn_menu_fragments_example_button"
         android:text="@string/third_app"
         android:layout_marginTop="@dimen/vertical_margin"
         style="@style/AppButton"
