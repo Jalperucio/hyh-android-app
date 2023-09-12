@@ -7,11 +7,21 @@
     android:padding="@dimen/main_margin"
     tools:context=".MenuActivity">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_menu_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/image_medium_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.appcompat.widget.AppCompatButton
         style="@style/AppButton"
         android:id="@+id/btn_menu_hello_button"
         android:text="@string/hello_app"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/vertical_margin"
+        app:layout_constraintTop_toBottomOf="@+id/iv_menu_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -26,10 +36,19 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_menu_fragments_example_button"
-        android:text="@string/third_app"
+        android:text="@string/hello_fragment_app"
         android:layout_marginTop="@dimen/vertical_margin"
         style="@style/AppButton"
         app:layout_constraintTop_toBottomOf="@id/btn_menu_lesson_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_menu_pokemon_button"
+        android:text="@string/pokemon_app"
+        android:layout_marginTop="@dimen/vertical_margin"
+        style="@style/AppButton"
+        app:layout_constraintTop_toBottomOf="@id/btn_menu_fragments_example_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

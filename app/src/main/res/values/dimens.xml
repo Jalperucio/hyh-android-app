@@ -27,5 +27,12 @@
     <dimen name="card_corner_radius">16dp</dimen>
     <dimen name="card_corner_small_radius">8dp</dimen>
 
+    <!-- Image -->
+    <dimen name="image_large_width">256dp</dimen>
+    <dimen name="image_large_height">256dp</dimen>
+    <dimen name="image_medium_width">128dp</dimen>
+    <dimen name="image_medium_height">128dp</dimen>
+
+
 
 </resources>

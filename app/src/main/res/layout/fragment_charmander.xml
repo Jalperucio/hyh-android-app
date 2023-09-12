@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/charmander_color">
+
+    <TextView
+        style="@style/Text.Title.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/vertical_large_margin"
+        android:text="@string/pokemon_charmander"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/image_large_width"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/ic_pokemon_charmander"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

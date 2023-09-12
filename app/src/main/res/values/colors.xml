@@ -8,11 +8,12 @@
     <color name="purple_dark">#FF3700B3</color>
     <color name="navy_blue">#152B67</color>
     <color name="blue">#006BC0</color>
-    <color name="teal_dark">#FF018786</color>
+    <color name="teal_dark">#0B7744</color>
     <color name="blue_cool">#00CBE4</color>
     <color name="teal_light">#FF03DAC5</color>
     <color name="green_lime">#8BC34A</color>
     <color name="yellow_buttercup">#FFD70F</color>
+    <color name="orange_pumpkin">#FF9800</color>
     <color name="red">#E91E63</color>
     <color name="wine_light">#F165AC</color>
     <color name="wine">#763456</color>
@@ -38,4 +39,8 @@
     <color name="android_color">@color/green_lime</color>
     <color name="ios_color">@color/pink</color>
     <color name="flutter_color">@color/blue_cool</color>
+
+    <color name="bulbasaur_color">@color/teal_dark</color>
+    <color name="squirtle_color">@color/blue_cool</color>
+    <color name="charmander_color">@color/orange_pumpkin</color>
 </resources>

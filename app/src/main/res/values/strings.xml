@@ -1,17 +1,20 @@
 <resources>
     <string name="app_name">MyFirstApp</string>
 
-
-    <string name="hello_app">Hello App</string>
-    <string name="lesson_app">Lesson App</string>
-    <string name="fragments_app">Lesson App</string>
-    <string name="tabs_app">Lesson App</string>
-    <string name="third_app">Third App</string>
-    <string name="fourth_app">Fourth App</string>
-
+    <string name="hello_app">Hello (Activities)</string>
+    <string name="lesson_app">Lesson (RecyclerViews)</string>
+    <string name="hello_fragment_app">Hello2 (Fragments)</string>
+    <string name="pokemon_app">PokemonApp (Tabs + Imgs)</string>
 
     <!-- Main texts -->
     <string name="main_name_hint">Introduzca su nombre</string>
+
+    <!-- Este %s es una variable que pasaremos en el código -->
+    <!-- para múltiples variables serían:                   -->
+    <!-- Strings: %1$s, %2$s, %3$s                          -->
+    <!-- Enteros: %1$d, %2$d, %3$d                          -->
+    <string name="greeting_name">Bienvenido, Mr.%s</string>
+    <string name="greeting_name_anonymous">Anónim@</string>
 
     <!-- Lesson texts -->
     <string name="lesson_title_label">Lista de lecciones</string>
@@ -22,7 +25,13 @@
     <string name="lessons">Lecciones</string>
     <string name="add_lesson">Añadir nueva lección</string>
     <string name="add_lesson_name_hint">Introduzca un nombre</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Pokemon texts -->
+    <string name="pokemon_squirtle">Squirtle</string>
+    <string name="pokemon_bulbasaur">Bulbasaur</string>
+    <string name="pokemon_charmander">Charmander</string>
+
 
 </resources>
