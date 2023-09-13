@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Internet -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,9 +12,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.MyFirstApp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <activity
+            android:name=".chronometer.ChronometerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".coroutines.CoroutinesExampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".helloprefs.HelloPrefsActivity"
+            android:exported="false" />
         <activity
             android:name=".pokemonapp.PokemonActivity"
             android:exported="false" />

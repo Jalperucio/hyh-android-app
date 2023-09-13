@@ -52,4 +52,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_menu_hello_prefs_button"
+        android:text="@string/hello_preferences"
+        android:layout_marginTop="@dimen/vertical_margin"
+        style="@style/AppButton"
+        app:layout_constraintTop_toBottomOf="@id/btn_menu_pokemon_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_menu_coroutines_example_button"
+        android:text="@string/coroutines_example"
+        android:layout_marginTop="@dimen/vertical_margin"
+        style="@style/AppButton"
+        app:layout_constraintTop_toBottomOf="@id/btn_menu_hello_prefs_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_menu_chronometer_button"
+        android:text="@string/chronometer"
+        android:layout_marginTop="@dimen/vertical_margin"
+        style="@style/AppButton"
+        app:layout_constraintTop_toBottomOf="@id/btn_menu_coroutines_example_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
