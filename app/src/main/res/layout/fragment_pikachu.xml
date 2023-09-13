@@ -5,29 +5,29 @@
     android:orientation="vertical"
     android:gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/squirtle_color">
+    android:background="@color/pikachu_color">
 
     <TextView
-        style="@style/Text.Title.White"
+        style="@style/Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/vertical_large_margin"
-        android:text="@string/pokemon_squirtle"/>
+        android:text="@string/pokemon_pikachu"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_squirtle_image"
+        android:id="@+id/iv_pikachu_image"
         android:layout_width="@dimen/image_large_width"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
         android:adjustViewBounds="true"/>
 
     <TextView
-        style="@style/Text.Title.White"
+        style="@style/Text.Title"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/vertical_large_margin"
         android:layout_marginHorizontal="@dimen/horizontal_large_margin"
-        android:text="@string/image_inserted_programatically"/>
+        android:text="@string/image_inserted_by_glide_placeholder"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

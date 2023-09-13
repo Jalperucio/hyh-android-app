@@ -21,4 +21,13 @@
         android:adjustViewBounds="true"
         app:srcCompat="@drawable/ic_pokemon_bulbasaur"/>
 
+    <TextView
+        style="@style/Text.Title.White"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_marginHorizontal="@dimen/horizontal_large_margin"
+        android:text="@string/image_inserted_by_xml"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>

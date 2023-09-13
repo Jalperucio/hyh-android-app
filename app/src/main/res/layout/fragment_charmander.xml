@@ -15,10 +15,19 @@
         android:text="@string/pokemon_charmander"/>
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_charmander_image"
         android:layout_width="@dimen/image_large_width"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
-        android:adjustViewBounds="true"
-        app:srcCompat="@drawable/ic_pokemon_charmander"/>
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        style="@style/Text.Title.White"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:layout_marginHorizontal="@dimen/horizontal_large_margin"
+        android:text="@string/image_inserted_by_glide"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

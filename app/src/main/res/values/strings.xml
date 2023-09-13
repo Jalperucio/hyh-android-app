@@ -32,6 +32,15 @@
     <string name="pokemon_squirtle">Squirtle</string>
     <string name="pokemon_bulbasaur">Bulbasaur</string>
     <string name="pokemon_charmander">Charmander</string>
+    <string name="pokemon_pikachu">Pikachu</string>
+
+    <string name="image_inserted_by_xml">Imagen insertada en el ImageView del layout</string>
+    <string name="image_inserted_programatically">Imagen insertada programaticamente desde el fragment</string>
+    <string name="image_inserted_by_glide">Imagen insertada desde una URL con Glide</string>
+    <string name="image_inserted_by_glide_placeholder">Imagen con URL errónea en Glide que muestra un placeholder por defecto</string>
+
+
+
 
 
 </resources>
