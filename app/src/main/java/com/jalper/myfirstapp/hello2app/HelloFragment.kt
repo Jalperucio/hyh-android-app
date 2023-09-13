@@ -30,7 +30,7 @@ class HelloFragment : Fragment() {
          */
         binding.moduleSendName.btnButton.setOnClickListener {
             val nameEditText = binding.moduleSendName.etMainName.text
-            if (nameEditText.isNullOrBlank()) {
+            if (!nameEditText.isNullOrBlank()) {
                 (activity as Hello2MainActivity).navigateToGreetingFragment(NAME, nameEditText.toString())
             }
         }
