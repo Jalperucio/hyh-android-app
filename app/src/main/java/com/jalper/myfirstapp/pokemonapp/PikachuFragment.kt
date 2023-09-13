@@ -7,27 +7,31 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.jalper.myfirstapp.R
-import com.jalper.myfirstapp.databinding.FragmentCharmanderBinding
+import com.jalper.myfirstapp.databinding.FragmentPikachuBinding
 
-class CharmanderFragment : Fragment() {
+class PikachuFragment : Fragment() {
 
-    private lateinit var binding: FragmentCharmanderBinding
+    private lateinit var binding: FragmentPikachuBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentCharmanderBinding.inflate(layoutInflater)
+        binding = FragmentPikachuBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /** Insertar imagen por Glide*/
+        /**Se puede añadir un placeholder por si una imagen no se
+         * carga correctamente o es errónea, tenerla por defecto
+         */
+        val pikachuWrongUrl = "https://www.fake.com/pikachu_fake.png"
+
         Glide.with(this)
-            .load("https://images.wikidexcdn.net/mwuploads/wikidex/5/56/latest/20200307023245/Charmander.png")
+            .load(pikachuWrongUrl)
             .placeholder(R.drawable.ic_pokemon_missingno)
-            .into(binding.ivCharmanderImage)
+            .into(binding.ivPikachuImage)
     }
 }

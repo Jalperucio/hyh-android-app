@@ -40,19 +40,21 @@ class TabFragment : Fragment() {
             tab.text = when (position) {
                 0 -> getString(R.string.pokemon_bulbasaur)
                 1 -> getString(R.string.pokemon_squirtle)
-                else -> getString(R.string.pokemon_charmander)
+                2 -> getString(R.string.pokemon_charmander)
+                else -> getString(R.string.pokemon_pikachu)
             }
         }.attach()
     }
 
     private inner class PokemonViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-        override fun getItemCount() = 3
+        override fun getItemCount() = 4
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> BulbasaurFragment()
                 1 -> SquirtleFragment()
                 2 -> CharmanderFragment()
+                3 -> PikachuFragment()
                 else -> throw IllegalArgumentException("Invalid position")
             }
         }
