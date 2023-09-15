@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="500dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/main_margin">
+
+    <TextView
+        style="@style/Text.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="@dimen/main_margin"
+        android:text="@string/add_lesson" />
+
+    <EditText
+        android:id="@+id/et_dialog_add_lesson_name"
+        style="@style/EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/add_lesson_name_hint"
+        android:maxLines="1" />
+
+    <RadioGroup
+        android:id="@+id/rg_dialog_add_lesson_language"
+        android:layout_marginVertical="@dimen/vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_dialog_add_language_android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/android_color"
+            android:checked="true"
+            android:text="@string/language_android" />
+
+        <RadioButton
+            android:id="@+id/rb_dialog_add_language_ios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/ios_color"
+            android:text="@string/language_ios" />
+
+        <RadioButton
+            android:id="@+id/rb_dialog_add_language_flutter"
+            style="@style/Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/flutter_color"
+            android:text="@string/language_flutter" />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_dialog_add_lesson"
+        style="@style/AppButton.Blue"
+        android:layout_marginTop="@dimen/vertical_large_margin"
+        android:enabled="false"
+        android:text="@string/add_lesson" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

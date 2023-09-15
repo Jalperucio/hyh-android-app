@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">MyFirstApp</string>
+
+    <string name="hello_app">Hello (Activities)</string>
+    <string name="lesson_app">Lesson (RecyclerViews)</string>
+    <string name="hello_fragment_app">Hello2 (Fragments)</string>
+    <string name="pokemon_app">PokemonApp (Tabs + Imgs)</string>
+
+    <!-- Main texts -->
+    <string name="main_name_hint">Introduzca su nombre</string>
+
+    <!-- Este %s es una variable que pasaremos en el código -->
+    <!-- para múltiples variables serían:                   -->
+    <!-- Strings: %1$s, %2$s, %3$s                          -->
+    <!-- Enteros: %1$d, %2$d, %3$d                          -->
+    <string name="greeting_name">Bienvenido, Mr.%s</string>
+    <string name="greeting_name_anonymous">Anónim@</string>
+
+    <!-- Lesson texts -->
+    <string name="lesson_title_label">Lista de lecciones</string>
+    <string name="language">Idiomas</string>
+    <string name="language_android">Android</string>
+    <string name="language_ios">iOS</string>
+    <string name="language_flutter">Flutter</string>
+    <string name="lessons">Lecciones</string>
+    <string name="add_lesson">Añadir nueva lección</string>
+    <string name="add_lesson_name_hint">Introduzca un nombre</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Pokemon texts -->
+    <string name="pokemon_squirtle">Squirtle</string>
+    <string name="pokemon_bulbasaur">Bulbasaur</string>
+    <string name="pokemon_charmander">Charmander</string>
+    <string name="pokemon_pikachu">Pikachu</string>
+
+    <string name="image_inserted_by_xml">Imagen insertada en el ImageView del layout</string>
+    <string name="image_inserted_programatically">Imagen insertada programaticamente desde el fragment</string>
+    <string name="image_inserted_by_glide">Imagen insertada desde una URL con Glide</string>
+    <string name="image_inserted_by_glide_placeholder">Imagen con URL errónea en Glide que muestra un placeholder por defecto</string>
+    <string name="hello_preferences">Hello Preferences</string>
+    <string name="enter_your_name">Introduce tu nombre</string>
+    <string name="save">Guardar</string>
+    <string name="coroutines_example">Coroutines Example</string>
+    <string name="coroutine_result">El resultado es: %s</string>
+    <string name="coroutine_empty_result">El resultado es: N/A</string>
+    <string name="launch_task_one">Launch task 1</string>
+    <string name="launch_task_two">Launch task 2</string>
+    <string name="chronometer">Chronometer</string>
+    <string name="default_chronometer_value">00:00:00</string>
+
+
+</resources>
