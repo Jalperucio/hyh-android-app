@@ -36,7 +36,7 @@ class CharactersViewModel(
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val data = charactersUseCase.execute()
+                val data = charactersUseCase.execute(forceRemote = true)
 
                 withContext(Dispatchers.Main) {
                     characterMutableLiveData.value = ResourceState.Success(data)

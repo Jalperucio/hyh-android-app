@@ -5,18 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmorty.R
-import com.example.rickandmorty.data.character.CharactersDataImpl
-import com.example.rickandmorty.presentation.adapter.CharacterListAdapter
 import com.example.rickandmorty.databinding.FragmentCharacterListBinding
-import com.example.rickandmorty.domain.usecase.GetCharactersUseCase
 import com.example.rickandmorty.model.ResourceState
+import com.example.rickandmorty.presentation.adapter.CharacterListAdapter
 import com.example.rickandmorty.presentation.viewmodel.CharacterListState
 import com.example.rickandmorty.presentation.viewmodel.CharactersViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class CharacterListFragment : Fragment() {
 
@@ -26,7 +24,7 @@ class CharacterListFragment : Fragment() {
 
     private val characterListAdapter = CharacterListAdapter()
 
-    private lateinit var charactersViewModel: CharactersViewModel
+    private val charactersViewModel: CharactersViewModel by activityViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +43,6 @@ class CharacterListFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        charactersViewModel = ViewModelProvider(requireActivity())[CharactersViewModel::class.java]
-
         charactersViewModel.getCharacterLiveData().observe(viewLifecycleOwner) { state ->
             handleCharacterListState(state)
         }

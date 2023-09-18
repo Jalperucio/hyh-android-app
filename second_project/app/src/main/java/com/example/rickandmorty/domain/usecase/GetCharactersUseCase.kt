@@ -7,8 +7,8 @@ class GetCharactersUseCase(
     private val charactersRepository: CharactersRepository
 ) {
 
-    suspend fun execute(): List<Character> {
-        return charactersRepository.getCharacters()
+    suspend fun execute(forceRemote: Boolean = false): List<Character> {
+        return charactersRepository.getCharacters(forceRemote)
     }
 
 }

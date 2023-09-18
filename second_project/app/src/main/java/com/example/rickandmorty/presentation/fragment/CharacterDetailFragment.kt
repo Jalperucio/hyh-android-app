@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.rickandmorty.R
@@ -15,6 +14,7 @@ import com.example.rickandmorty.model.ResourceState
 import com.example.rickandmorty.presentation.viewmodel.CharacterDetailState
 import com.example.rickandmorty.presentation.viewmodel.CharactersViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class CharacterDetailFragment : Fragment() {
 
@@ -24,7 +24,7 @@ class CharacterDetailFragment : Fragment() {
 
     private val args: CharacterDetailFragmentArgs by navArgs()
 
-    private lateinit var charactersViewModel: CharactersViewModel
+    private val charactersViewModel: CharactersViewModel by activityViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,8 +42,6 @@ class CharacterDetailFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        charactersViewModel = ViewModelProvider(requireActivity())[CharactersViewModel::class.java]
-
         charactersViewModel.getCharacterDetailLiveData().observe(viewLifecycleOwner) { state ->
             handleCharacterDetailState(state)
         }
