@@ -1,11 +1,11 @@
-package com.example.rickandmorty.viewmodel
+package com.example.rickandmorty.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.rickandmorty.api.ApiClient
-import com.example.rickandmorty.api.RickAndMortyService
+import com.example.rickandmorty.domain.usecase.GetCharacterDetailUseCase
+import com.example.rickandmorty.domain.usecase.GetCharactersUseCase
 import com.example.rickandmorty.model.Character
 import com.example.rickandmorty.model.ResourceState
 import kotlinx.coroutines.Dispatchers
@@ -15,9 +15,10 @@ import kotlinx.coroutines.withContext
 typealias CharacterListState = ResourceState<List<Character>>
 typealias CharacterDetailState = ResourceState<Character>
 
-class CharactersViewModel : ViewModel() {
-
-    private val rickAndMortyService = ApiClient.retrofit.create(RickAndMortyService::class.java)
+class CharactersViewModel(
+    private val charactersUseCase: GetCharactersUseCase,
+    private val characterDetailUseCase: GetCharacterDetailUseCase
+) : ViewModel() {
 
     private val characterMutableLiveData = MutableLiveData<CharacterListState>()
     private val characterDetailMutableLiveData = MutableLiveData<CharacterDetailState>()
@@ -35,18 +36,15 @@ class CharactersViewModel : ViewModel() {
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = rickAndMortyService.getCharacters()
+                val data = charactersUseCase.execute()
 
                 withContext(Dispatchers.Main) {
-                    if (response.isSuccessful && response.body() != null) {
-                        characterMutableLiveData.value = ResourceState.Success(response.body()!!.characters)
-                    } else {
-                        characterMutableLiveData.value = ResourceState.Error(response.errorBody()?.string().orEmpty())
-                    }
+                    characterMutableLiveData.value = ResourceState.Success(data)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    characterMutableLiveData.value = ResourceState.Error("Ha ocurrido un error")
+                    characterMutableLiveData.value =
+                        ResourceState.Error(e.localizedMessage.orEmpty())
                 }
             }
         }
@@ -57,18 +55,15 @@ class CharactersViewModel : ViewModel() {
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = rickAndMortyService.getCharacter(characterId)
+                val data = characterDetailUseCase.execute(characterId)
 
                 withContext(Dispatchers.Main) {
-                    if (response.isSuccessful && response.body() != null) {
-                        characterDetailMutableLiveData.value = ResourceState.Success(response.body()!!)
-                    } else {
-                        characterDetailMutableLiveData.value = ResourceState.Error(response.errorBody()?.string().orEmpty())
-                    }
+                    characterDetailMutableLiveData.value = ResourceState.Success(data)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    characterDetailMutableLiveData.value = ResourceState.Error("Ha ocurrido un error")
+                    characterDetailMutableLiveData.value =
+                        ResourceState.Error(e.localizedMessage.orEmpty())
                 }
             }
         }

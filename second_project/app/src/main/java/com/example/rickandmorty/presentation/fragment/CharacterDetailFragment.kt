@@ -1,4 +1,4 @@
-package com.example.rickandmorty.fragment
+package com.example.rickandmorty.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.FragmentCharacterDetailBinding
 import com.example.rickandmorty.model.Character
 import com.example.rickandmorty.model.ResourceState
-import com.example.rickandmorty.viewmodel.CharacterDetailState
-import com.example.rickandmorty.viewmodel.CharactersViewModel
+import com.example.rickandmorty.presentation.viewmodel.CharacterDetailState
+import com.example.rickandmorty.presentation.viewmodel.CharactersViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CharacterDetailFragment : Fragment() {

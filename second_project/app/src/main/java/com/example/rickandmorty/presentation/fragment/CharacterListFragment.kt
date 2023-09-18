@@ -1,4 +1,4 @@
-package com.example.rickandmorty.fragment
+package com.example.rickandmorty.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rickandmorty.R
-import com.example.rickandmorty.adapter.CharacterListAdapter
+import com.example.rickandmorty.data.character.CharactersDataImpl
+import com.example.rickandmorty.presentation.adapter.CharacterListAdapter
 import com.example.rickandmorty.databinding.FragmentCharacterListBinding
+import com.example.rickandmorty.domain.usecase.GetCharactersUseCase
 import com.example.rickandmorty.model.ResourceState
-import com.example.rickandmorty.viewmodel.CharacterListState
-import com.example.rickandmorty.viewmodel.CharactersViewModel
+import com.example.rickandmorty.presentation.viewmodel.CharacterListState
+import com.example.rickandmorty.presentation.viewmodel.CharactersViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CharacterListFragment : Fragment() {
