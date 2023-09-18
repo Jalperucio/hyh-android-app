@@ -6,15 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.rickandmorty.R
 import com.example.rickandmorty.databinding.FragmentCharacterDetailBinding
+import com.example.rickandmorty.model.Character
+import com.example.rickandmorty.model.ResourceState
+import com.example.rickandmorty.viewmodel.CharacterDetailState
 import com.example.rickandmorty.viewmodel.CharactersViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CharacterDetailFragment : Fragment() {
 
     private val binding: FragmentCharacterDetailBinding by lazy {
         FragmentCharacterDetailBinding.inflate(layoutInflater)
     }
+
+    private val args: CharacterDetailFragmentArgs by navArgs()
 
     private lateinit var charactersViewModel: CharactersViewModel
 
@@ -29,23 +37,53 @@ class CharacterDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViewModel()
-        initUI()
+
+        charactersViewModel.fetchCharacter(args.characterId)
     }
 
     private fun initViewModel() {
         charactersViewModel = ViewModelProvider(requireActivity())[CharactersViewModel::class.java]
+
+        charactersViewModel.getCharacterDetailLiveData().observe(viewLifecycleOwner) { state ->
+            handleCharacterDetailState(state)
+        }
     }
 
-    private fun initUI() {
-        val character = charactersViewModel.selectedCharacter
+    private fun handleCharacterDetailState(state: CharacterDetailState) {
+        when (state) {
+            is ResourceState.Loading -> {
+                binding.pbCjaracterDetail.visibility = View.VISIBLE
+            }
 
-        if (character != null) {
-            binding.tvCharacterDetailName.text = character.name
-            binding.tvCharacterDetailSpecie.text = character.species.name
+            is ResourceState.Success -> {
+                binding.pbCjaracterDetail.visibility = View.GONE
+                initUI(state.result)
+            }
 
-            Glide.with(requireContext())
-                .load(character.image)
-                .into(binding.ivCharacterDetail)
+            is ResourceState.Error -> {
+                binding.pbCjaracterDetail.visibility = View.GONE
+                showErrorDialog(state.error)
+            }
         }
+    }
+
+    private fun initUI(character: Character) {
+        binding.tvCharacterDetailName.text = character.name
+        binding.tvCharacterDetailSpecie.text = character.species.name
+
+        Glide.with(requireContext())
+            .load(character.image)
+            .into(binding.ivCharacterDetail)
+    }
+
+    private fun showErrorDialog(error: String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.error)
+            .setMessage(error)
+            .setPositiveButton(R.string.action_ok, null)
+            .setNegativeButton(R.string.action_retry) { dialog, witch ->
+                charactersViewModel.fetchCharacters()
+            }
+            .show()
     }
 }

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rickandmorty.MainActivity
 import com.example.rickandmorty.R
 import com.example.rickandmorty.adapter.CharacterListAdapter
 import com.example.rickandmorty.databinding.FragmentCharacterListBinding
@@ -51,14 +51,16 @@ class CharacterListFragment : Fragment() {
     }
 
     private fun handleCharacterListState(state: CharacterListState) {
-        when(state) {
+        when (state) {
             is ResourceState.Loading -> {
                 binding.pbCharacterList.visibility = View.VISIBLE
             }
+
             is ResourceState.Success -> {
                 binding.pbCharacterList.visibility = View.GONE
                 characterListAdapter.submitList(state.result)
             }
+
             is ResourceState.Error -> {
                 binding.pbCharacterList.visibility = View.GONE
                 showErrorDialog(state.error)
@@ -71,9 +73,11 @@ class CharacterListFragment : Fragment() {
         binding.rvCharacterList.layoutManager = LinearLayoutManager(requireContext())
 
         characterListAdapter.onClickListener = { character ->
-            charactersViewModel.selectedCharacter = character
-
-            (requireActivity() as MainActivity).loadFragment(CharacterDetailFragment())
+            findNavController().navigate(
+                CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(
+                    character.id.toInt()
+                )
+            )
         }
     }
 
