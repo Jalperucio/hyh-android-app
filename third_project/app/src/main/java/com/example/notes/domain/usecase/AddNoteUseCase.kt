@@ -8,6 +8,7 @@ class AddNoteUseCase(
 ) {
 
     fun execute(note: Note) {
+        note.id = (System.currentTimeMillis() / 1000).toInt()
         notesRepository.addNote(note)
     }
 
