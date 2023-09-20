@@ -40,8 +40,9 @@ class NotesLocalImpl(
 
     fun editNote(note: Note) {
         val notes = getNotes().toMutableList()
+        val selectedNote = getNote(note.id)
 
-        notes[notes.indexOf(note)] = note
+        notes[notes.indexOf(selectedNote)] = note
 
         saveInPreferences(notes)
     }

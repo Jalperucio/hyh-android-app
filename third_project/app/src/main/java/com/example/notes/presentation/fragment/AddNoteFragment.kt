@@ -26,21 +26,9 @@ class AddNoteFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*requireActivity().onBackPressedDispatcher.addCallback(this) {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
             saveNote()
-        }*/
-
-        val callback = object : OnBackPressedCallback(
-            true // default to enabled
-        ) {
-            override fun handleOnBackPressed() {
-                saveNote()
-            }
         }
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this, // LifecycleOwner
-            callback
-        )
 
     }
 
