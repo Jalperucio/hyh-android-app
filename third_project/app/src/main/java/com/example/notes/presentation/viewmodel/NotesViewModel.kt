@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.notes.domain.usecase.AddNoteUseCase
+import com.example.notes.domain.usecase.DeleteNoteUseCase
 import com.example.notes.domain.usecase.EditNoteUseCase
 import com.example.notes.domain.usecase.GetNoteUseCase
 import com.example.notes.domain.usecase.GetNotesUseCase
@@ -18,12 +19,14 @@ typealias NoteListState = ResourceState<List<Note>>
 typealias AddNoteState = ResourceState<Void?>
 typealias NoteDetailState = ResourceState<Note>
 typealias EditNoteState = ResourceState<Void?>
+typealias DeleteNoteState = ResourceState<Void?>
 
 class NotesViewModel(
     private val getNotesUseCase: GetNotesUseCase,
     private val addNoteUseCase: AddNoteUseCase,
     private val getNoteUseCase: GetNoteUseCase,
-    private val editNoteUseCase: EditNoteUseCase
+    private val editNoteUseCase: EditNoteUseCase,
+    private val deleteNoteUseCase: DeleteNoteUseCase
 ) : ViewModel() {
 
     private val _noteListLiveData = MutableLiveData<NoteListState>()
@@ -37,6 +40,9 @@ class NotesViewModel(
 
     private val _editNoteLiveData = MutableLiveData<EditNoteState>()
     val editNoteLiveData: LiveData<EditNoteState> get() = _editNoteLiveData
+
+    private val _deleteNoteLiveData = MutableLiveData<DeleteNoteState>()
+    val deleteNoteLiveData: LiveData<DeleteNoteState> get() = _deleteNoteLiveData
 
     fun fetchNoteList() {
         _noteListLiveData.value = ResourceState.Loading()
@@ -113,6 +119,26 @@ class NotesViewModel(
                 withContext(Dispatchers.Main) {
                     _editNoteLiveData.value = ResourceState.Error(e.localizedMessage.orEmpty())
                     _editNoteLiveData.value = ResourceState.None()
+                }
+            }
+        }
+    }
+
+    fun deleteNote(noteId: Int) {
+        _deleteNoteLiveData.value = ResourceState.Loading()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                deleteNoteUseCase.execute(noteId)
+
+                withContext(Dispatchers.Main) {
+                    _deleteNoteLiveData.value = ResourceState.Success(null)
+                    _deleteNoteLiveData.value = ResourceState.None()
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    _deleteNoteLiveData.value = ResourceState.Error(e.localizedMessage.orEmpty())
+                    _deleteNoteLiveData.value = ResourceState.None()
                 }
             }
         }

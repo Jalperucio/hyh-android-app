@@ -23,5 +23,5 @@ val notesModule = module {
     factory { GetNotesUseCase(get()) }
     factory { GetNoteUseCase(get()) }
 
-    viewModel { NotesViewModel(get(), get(), get(), get()) }
+    viewModel { NotesViewModel(get(), get(), get(), get(), get()) }
 }

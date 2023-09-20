@@ -9,7 +9,7 @@ import com.example.notes.model.Note
 
 class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.NoteListViewHolder>() {
 
-    private var noteList: List<Note> = emptyList()
+    var noteList: ArrayList<Note> = ArrayList()
 
     var onClickListener: (Note) -> Unit = {}
 
@@ -40,7 +40,8 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.NoteListViewHolder>
     }
 
     fun submitList(list: List<Note>) {
-        noteList = list
+        noteList.clear()
+        noteList.addAll(list)
         notifyDataSetChanged()
     }
 

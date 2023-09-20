@@ -44,6 +44,9 @@ class AddNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.ibNoteDetailFavorite.visibility = View.GONE
+        binding.tvNoteDetailDate.visibility = View.GONE
+
         initViewModel()
     }
 
