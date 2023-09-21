@@ -1,6 +1,7 @@
 package com.example.notes
 
 import android.app.Application
+import com.example.notes.di.baseModule
 import com.example.notes.di.notesModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -12,7 +13,7 @@ class NotesApplication : Application() {
 
         startKoin {
             androidContext(this@NotesApplication)
-            modules(notesModule).allowOverride(true)
+            modules(baseModule, notesModule).allowOverride(true)
         }
     }
 

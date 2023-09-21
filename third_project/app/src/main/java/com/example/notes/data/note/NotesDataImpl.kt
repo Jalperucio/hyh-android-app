@@ -23,7 +23,7 @@ class NotesDataImpl(
         notesLocalImpl.editNote(note)
     }
 
-    override fun deleteNote(noteId: Int) {
-        notesLocalImpl.deleteNote(noteId)
+    override fun deleteNote(note: Note) {
+        notesLocalImpl.deleteNote(note)
     }
 }

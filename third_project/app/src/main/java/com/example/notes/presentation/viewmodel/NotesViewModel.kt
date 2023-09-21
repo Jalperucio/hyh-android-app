@@ -124,12 +124,12 @@ class NotesViewModel(
         }
     }
 
-    fun deleteNote(noteId: Int) {
+    fun deleteNote(note: Note) {
         _deleteNoteLiveData.value = ResourceState.Loading()
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                deleteNoteUseCase.execute(noteId)
+                deleteNoteUseCase.execute(note)
 
                 withContext(Dispatchers.Main) {
                     _deleteNoteLiveData.value = ResourceState.Success(null)

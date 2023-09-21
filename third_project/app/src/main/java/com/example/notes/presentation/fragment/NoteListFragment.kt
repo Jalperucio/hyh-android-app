@@ -74,7 +74,7 @@ class NoteListFragment : Fragment() {
                 noteListAdapter.noteList.removeAt(position)
                 noteListAdapter.notifyItemRemoved(position)
 
-                notesViewModel.deleteNote(note.id)
+                notesViewModel.deleteNote(note)
             }
 
         })
