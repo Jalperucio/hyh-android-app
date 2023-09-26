@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 
@@ -148,7 +149,7 @@ private fun MyCard(title: String, name: String, modifier: Modifier = Modifier){
 }
 
 @Composable
-private fun MyCardConstraint(title: String, name: String, modifier: Modifier = Modifier){
+fun MyCardConstraint(title: String, name: String, modifier: Modifier = Modifier){
     Card(modifier = modifier) {
         ConstraintLayout(modifier = modifier){
             val (
@@ -156,14 +157,16 @@ private fun MyCardConstraint(title: String, name: String, modifier: Modifier = M
                 titleView,
                 nameView
             ) = createRefs()
-
+            val topGuide = createGuidelineFromTop(0.1f)
+            val bottomGuide = createGuidelineFromBottom(0.1f)
+            val startGuidePercent = createGuidelineFromStart(10.dp)
             Box(modifier = Modifier
                 .size(32.dp)
                 .clip(CircleShape)
                 .background(Color.Red).constrainAs(pictureView){
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                    start.linkTo(parent.start)
+                    top.linkTo(topGuide)
+                    bottom.linkTo(bottomGuide)
+                    start.linkTo(startGuidePercent)
                 }
             )
 
@@ -173,6 +176,7 @@ private fun MyCardConstraint(title: String, name: String, modifier: Modifier = M
                     start.linkTo(pictureView.end, margin = 3.dp)
                     end.linkTo(parent.end)
                     width = Dimension.fillToConstraints
+                    bottom.linkTo(nameView.top)
                 }
             )
             Text(
@@ -184,6 +188,8 @@ private fun MyCardConstraint(title: String, name: String, modifier: Modifier = M
                     width = Dimension.fillToConstraints
                 }
             )
+
+            createVerticalChain(titleView, nameView, chainStyle = ChainStyle.SpreadInside)
         }
     }
 }
